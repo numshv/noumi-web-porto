@@ -6,6 +6,7 @@ import { useState } from "react";
 import type { Page } from "@/lib/types";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
+import Work from "@/components/Work";
 
 export default function Home() {
 
@@ -74,7 +75,7 @@ export default function Home() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4 }}
           >
-            {/* work content here */}
+            <Work/>
           </motion.div>
         )}
         {currentPage === "contact" && (
