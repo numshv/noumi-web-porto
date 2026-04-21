@@ -5,6 +5,7 @@ import Nav from "@/components/Nav";
 import { useState } from "react";
 import type { Page } from "@/lib/types";
 import About from "@/components/About";
+import Contact from "@/components/Contact";
 
 export default function Home() {
 
@@ -77,7 +78,7 @@ export default function Home() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4 }}
           >
-            {/* contact content here */}
+            <Contact/>
           </motion.div>
         )}
       </div>

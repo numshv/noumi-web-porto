@@ -129,7 +129,7 @@ export default function About() {
         variants={containerVariants}
         initial="hidden"
         animate="show"
-        className="relative ml-auto w-1/2 pt-32 pr-16 pb-32 flex flex-col gap-6"
+        className="relative ml-auto w-1/2 pt-48 pr-16 pb-32 flex flex-col gap-6"
       >
         {paragraphs.map((text, i) => (
           <motion.p
