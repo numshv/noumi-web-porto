@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Nav from "@/components/Nav";
 import { useState } from "react";
 import type { Page } from "@/lib/types";
+import About from "@/components/About";
 
 export default function Home() {
 
@@ -16,7 +17,7 @@ export default function Home() {
         layout
         transition={{duration: 0.6, ease: [0.25, 0.1, 0.25, 1]}}
         className={
-          `${
+          `z-100 ${
             isHome ?
             "absolute inset-0 flex items-center justify-center"
             : "fixed top-6 left-8"
@@ -58,7 +59,7 @@ export default function Home() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4 }}
           >
-            {/* about content here */}
+            <About/>
           </motion.div>
         )}
         {currentPage === "work" && (

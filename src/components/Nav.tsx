@@ -23,7 +23,7 @@ export default function Nav({curPage, onNavigate}: NavProps) {
     className='flex gap-2 items-center font-sans text-sm font-semibold tracking-widest'
     >
       {navItems.map((item, i) => (
-        <>
+        <React.Fragment key={item.page}>
           <button
             key={item.page}
             onClick={() => onNavigate(item.page)}
@@ -35,7 +35,7 @@ export default function Nav({curPage, onNavigate}: NavProps) {
           {i < navItems.length-1 && (
             <span key={`sep-${i}`} className='text-gray1'>/</span>
           )}
-        </>
+        </React.Fragment>
       ))}
     </motion.nav>
 

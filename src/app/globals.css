@@ -19,3 +19,21 @@ body {
   color: var(--foreground);
   font-family: var(--font-serif);
 }
+
+.fill-title {
+  position: relative;
+  display: inline-block;
+}
+
+.fill-title::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  color: var(--foreground);
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.fill-title:hover::after {
+  clip-path: inset(0% 0 0 0);
+}
