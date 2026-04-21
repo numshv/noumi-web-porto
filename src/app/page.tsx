@@ -12,6 +12,11 @@ export default function Home() {
   const[currentPage, setCurrentPage] = useState<Page>("home");
   const isHome = currentPage === "home";
 
+  const handleNavigate = (page: Page) => {
+    window.scrollTo({ top: 0 });
+    setCurrentPage(page);
+  };
+
   return (
     <main>
       <motion.div
@@ -48,7 +53,7 @@ export default function Home() {
             </motion.div>
           )}
 
-          <Nav curPage={currentPage} onNavigate={setCurrentPage} />
+          <Nav curPage={currentPage} onNavigate={handleNavigate} />
 
         </motion.div>
 
