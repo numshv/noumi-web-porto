@@ -1,12 +1,30 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import {
+  AnimatePresence,
+  animate,
+  motion,
+  useMotionTemplate,
+  useMotionValue,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+import { ImageOff } from "lucide-react";
 import { IoSearchOutline } from "react-icons/io5";
 import workData from "@/lib/work.json";
 import type { WorkItem } from "@/lib/types";
 
 const works = workData as WorkItem[];
+
+const START_TOP = 96; // top-24
+const START_LEFT = 32; // left-8
+const START_COLOR = "#A7A29E";
+
+const DOCKED_SIZE = 32; // px, font-size once docked
+const DOCKED_GAP = 20; // px, gap kept between title and the filter/search row
+const ROW_STICKY_TOP = 150; // px from viewport top where the header sticks — raise this for more breathing room below the nav
+const DOCKED_COLOR = "#1B1A19";
 
 const gridVariants = {
   hidden: {},
@@ -19,9 +37,113 @@ const cardVariants = {
   exit: { opacity: 0, y: -12, transition: { duration: 0.2 } },
 };
 
+function WorkImage({ src, alt }: { src: string; alt: string }) {
+  const [failed, setFailed] = useState(true);
+
+  if (failed) {
+    return (
+      <div className="flex h-full w-full items-center justify-center">
+        <ImageOff size={64} strokeWidth={2} color="#8F8C89" />
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      onError={() => setFailed(true)}
+      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+    />
+  );
+}
+
 export default function Work() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [query, setQuery] = useState("");
+
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const rowRef = useRef<HTMLDivElement>(null);
+
+  const [startSize, setStartSize] = useState(160);
+  const [dockedLeft, setDockedLeft] = useState(START_LEFT);
+  const [rowStartTop, setRowStartTop] = useState(400);
+  const [collapseRange, setCollapseRange] = useState(1);
+  const [headerHeight, setHeaderHeight] = useState(0);
+
+  // measure the title's real rendered size and the row's real document
+  // position, so every calculation below is based on actual layout, not
+  // guessed numbers
+  useLayoutEffect(() => {
+    const measure = () => {
+      if (!titleRef.current || !rowRef.current) return;
+
+      const computedSize = parseFloat(window.getComputedStyle(titleRef.current).fontSize);
+      if (computedSize) setStartSize(computedSize);
+
+      const rowRect = rowRef.current.getBoundingClientRect();
+      setDockedLeft(rowRect.left);
+
+      const rowDocTop = rowRect.top + window.scrollY;
+      setRowStartTop(rowDocTop);
+      setCollapseRange(Math.max(rowDocTop - ROW_STICKY_TOP, 40));
+      setHeaderHeight(ROW_STICKY_TOP + rowRect.height + 16);
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+
+  const { scrollY } = useScroll();
+  const progress = useTransform(scrollY, [0, collapseRange], [0, 1], { clamp: true });
+
+  // one-time fade-in on load (unchanged from before), multiplied with the
+  // scroll-driven fade so the very first frame looks identical to before
+  const mountProgress = useMotionValue(0);
+  useEffect(() => {
+    const controls = animate(mountProgress, 1, { duration: 1.2, ease: "easeOut" });
+    return controls.stop;
+  }, [mountProgress]);
+
+  const titleOpacity = useTransform([mountProgress, progress], (values) => {
+    const [m, p] = values as number[];
+    return m * (0.3 + p * 0.7);
+  });
+
+  // backdrop only appears as you scroll — stays fully invisible at rest,
+  // exactly like before
+  const backdropOpacity = progress;
+
+  const titleFontSizeValue = useTransform(
+    progress,
+    (p) => startSize + (DOCKED_SIZE - startSize) * p
+  );
+
+  // the title moves on its own path from its original spot towards the
+  // docked spot, but is never allowed to sit lower than "gap above the
+  // filter row's current (still-moving) top" — so instead of the two
+  // drifting out of sync mid-scroll, the title lands on the row exactly
+  // when the row reaches it, and rides along with it from then on
+  const titleTopValue = useTransform(progress, (p) => {
+    const fontSize = startSize + (DOCKED_SIZE - startSize) * p;
+    const rowLiveTop = rowStartTop - p * collapseRange;
+    const rowAnchoredTop = rowLiveTop - DOCKED_GAP - fontSize;
+
+    const finalDockedTop = ROW_STICKY_TOP - DOCKED_GAP - DOCKED_SIZE;
+    const naturalTop = START_TOP + (finalDockedTop - START_TOP) * p;
+
+    return Math.min(naturalTop, rowAnchoredTop);
+  });
+
+  const titleLeftValue = useTransform(
+    progress,
+    (p) => START_LEFT + (dockedLeft - START_LEFT) * p
+  );
+  const titleColor = useTransform(progress, [0, 1], [START_COLOR, DOCKED_COLOR]);
+
+  const titleTop = useMotionTemplate`${titleTopValue}px`;
+  const titleLeft = useMotionTemplate`${titleLeftValue}px`;
+  const titleFontSize = useMotionTemplate`${titleFontSizeValue}px`;
 
   const categories = useMemo(() => {
     const unique = Array.from(new Set(works.map((w) => w.category)));
@@ -43,19 +165,24 @@ export default function Work() {
 
   return (
     <div>
+      {/* solid backdrop behind the title + filter/search row, fades in as you scroll */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.3 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
-        className="fixed left-8 top-24 pointer-events-none select-none"
+        style={{ opacity: backdropOpacity, height: headerHeight }}
+        className="pointer-events-none fixed inset-x-0 top-0 z-30 bg-background"
+      />
+
+      <motion.div
+        style={{ top: titleTop, left: titleLeft, opacity: titleOpacity }}
+        className="pointer-events-none fixed z-50 select-none"
       >
-        <h1
+        <motion.h1
+          ref={titleRef}
           className="fill-title font-sans font-semibold pointer-events-auto"
           data-text="My Work"
-          style={{ fontSize: "clamp(5rem, 15vw, 14rem)", color: "#A7A29E", lineHeight: 1 }}
+          style={{ fontSize: titleFontSize, color: titleColor, lineHeight: 1 }}
         >
           My Work
-        </h1>
+        </motion.h1>
       </motion.div>
 
       <motion.div
@@ -64,7 +191,11 @@ export default function Work() {
         transition={{ duration: 0.6, delay: 0.3 }}
         className="pt-64"
       >
-        <div className="flex flex-wrap items-center justify-between gap-6 pb-10">
+        <div
+          ref={rowRef}
+          style={{ top: ROW_STICKY_TOP }}
+          className="sticky z-40 flex flex-wrap items-center justify-between gap-6 bg-background pb-2"
+        >
           <nav className="flex flex-wrap items-center gap-2 font-sans text-sm font-semibold tracking-widest">
             {categories.map((cat, i) => (
               <React.Fragment key={cat}>
@@ -100,7 +231,7 @@ export default function Work() {
           variants={gridVariants}
           initial="hidden"
           animate="show"
-          className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+          className="relative z-10 grid grid-cols-1 gap-x-8 gap-y-12 pt-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
         >
           <AnimatePresence mode="popLayout">
             {filtered.map((item) => (
@@ -116,21 +247,17 @@ export default function Work() {
                 rel="noopener noreferrer"
                 className="group flex flex-col gap-3"
               >
-                <div className="aspect-square overflow-hidden bg-foreground/5">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                <div className="aspect-[4/3] overflow-hidden bg-foreground/5">
+                  <WorkImage src={item.image} alt={item.title} />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <h3 className="font-sans text-sm font-semibold tracking-wide">
+                  <h3 className="font-sans font-semibold tracking-wide uppercase">
                     {item.title}
                   </h3>
-                  <p className="font-serif text-sm leading-relaxed text-foreground/70">
+                  <p className="font-serif text leading-relaxed text-justify">
                     {item.description}
                   </p>
-                  <p className="self-end font-serif text-xs text-gray1">
+                  <p className="self-end font-serif text-sm">
                     {`{${item.tags.join(", ")}}`}
                   </p>
                 </div>
