@@ -17,24 +17,40 @@ import type { WorkItem } from "@/lib/types";
 
 const works = workData as WorkItem[];
 
-const START_TOP = 96; // top-24
-const START_LEFT = 32; // left-8
+const START_TOP = 96; 
+const START_LEFT = 32; 
 const START_COLOR = "#A7A29E";
 
-const DOCKED_SIZE = 32; // px, font-size once docked
-const DOCKED_GAP = 20; // px, gap kept between title and the filter/search row
-const ROW_STICKY_TOP = 150; // px from viewport top where the header sticks — raise this for more breathing room below the nav
+const DOCKED_SIZE = 32;
+const DOCKED_GAP = 20; 
+const ROW_STICKY_TOP = 150; 
 const DOCKED_COLOR = "#1B1A19";
 
-const gridVariants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.08 } },
+const ELEMENT_DURATION = 0.45;
+const NAV_TO_SEARCH_GAP = 0.02;
+
+const NAV_DELAY = ELEMENT_DURATION;
+const SEARCH_DELAY = NAV_DELAY + NAV_TO_SEARCH_GAP;
+const SEARCH_END = SEARCH_DELAY + ELEMENT_DURATION; // when search bar is fully settled
+const INITIAL_GRID_DELAY = SEARCH_END + NAV_TO_SEARCH_GAP; // first card's delay, first load only
+const CARD_STAGGER = 0.15;
+
+const navVariants = {
+  hidden: { opacity: 0, y: 16 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: ELEMENT_DURATION, ease: "easeOut" as const, delay: NAV_DELAY },
+  },
 };
 
-const cardVariants = {
+const searchVariants = {
   hidden: { opacity: 0, y: 16 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" as const } },
-  exit: { opacity: 0, y: -12, transition: { duration: 0.2 } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: ELEMENT_DURATION, ease: "easeOut" as const, delay: SEARCH_DELAY },
+  },
 };
 
 function WorkImage({ src, alt }: { src: string | null; alt: string }) {
@@ -61,6 +77,35 @@ function WorkImage({ src, alt }: { src: string | null; alt: string }) {
 export default function Work() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [query, setQuery] = useState("");
+
+  // flips to true once the very first intro sequence (title -> nav ->
+  // search -> initial card cascade) has fully played out. Before that,
+  // cards wait for INITIAL_GRID_DELAY; after that, filtering/search
+  // interactions bring cards in immediately with just a small stagger.
+  const [initialSequenceDone, setInitialSequenceDone] = useState(false);
+
+  useEffect(() => {
+    const totalIntro = INITIAL_GRID_DELAY + works.length * CARD_STAGGER;
+    const t = setTimeout(() => setInitialSequenceDone(true), totalIntro * 1000);
+    return () => clearTimeout(t);
+  }, []);
+
+  const cardVariants = useMemo(
+    () => ({
+      hidden: { opacity: 0, y: 16 },
+      show: (index: number) => ({
+        opacity: 1,
+        y: 0,
+        transition: {
+          duration: ELEMENT_DURATION,
+          ease: "easeOut" as const,
+          delay: initialSequenceDone ? index * CARD_STAGGER : INITIAL_GRID_DELAY + index * CARD_STAGGER,
+        },
+      }),
+      exit: { opacity: 0, y: -12, transition: { duration: 0.2 } },
+    }),
+    [initialSequenceDone]
+  );
 
   const titleRef = useRef<HTMLHeadingElement>(null);
   const rowRef = useRef<HTMLDivElement>(null);
@@ -185,18 +230,18 @@ export default function Work() {
         </motion.h1>
       </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        className="pt-64"
-      >
+      <div className="pt-64">
         <div
           ref={rowRef}
           style={{ top: ROW_STICKY_TOP }}
           className="sticky z-40 flex flex-wrap items-center justify-between gap-6 bg-background pb-2"
         >
-          <nav className="flex flex-wrap items-center gap-2 font-sans text-sm font-semibold tracking-widest">
+          <motion.nav
+            variants={navVariants}
+            initial="hidden"
+            animate="show"
+            className="flex flex-wrap items-center gap-2 font-sans text-sm font-semibold tracking-widest"
+          >
             {categories.map((cat, i) => (
               <React.Fragment key={cat}>
                 <button
@@ -210,9 +255,14 @@ export default function Work() {
                 {i < categories.length - 1 && <span className="text-gray1">/</span>}
               </React.Fragment>
             ))}
-          </nav>
+          </motion.nav>
 
-          <div className="relative w-full max-w-xs">
+          <motion.div
+            variants={searchVariants}
+            initial="hidden"
+            animate="show"
+            className="relative w-full max-w-xs"
+          >
             <IoSearchOutline
               size={16}
               className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-gray1"
@@ -223,21 +273,19 @@ export default function Work() {
               placeholder="Search a project, category, or tag..."
               className="w-full rounded-full border border-gray1/40 bg-transparent py-2 pl-10 pr-4 font-serif text-sm text-foreground placeholder:text-gray1 focus:border-foreground/40 focus:outline-none transition-colors duration-200"
             />
-          </div>
+          </motion.div>
         </div>
 
         <motion.div
           layout
-          variants={gridVariants}
-          initial="hidden"
-          animate="show"
           className="relative z-10 grid grid-cols-1 gap-x-8 gap-y-12 pt-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
         >
           <AnimatePresence mode="popLayout">
-            {filtered.map((item) => (
+            {filtered.map((item, index) => (
               <motion.a
                 key={item.id}
                 layout
+                custom={index}
                 variants={cardVariants}
                 initial="hidden"
                 animate="show"
@@ -271,7 +319,7 @@ export default function Work() {
             No projects match your search yet.
           </p>
         )}
-      </motion.div>
+      </div>
     </div>
   );
 }
