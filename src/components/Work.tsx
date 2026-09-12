@@ -254,7 +254,7 @@ export default function Work() {
                   <h3 className="font-sans font-semibold tracking-wide uppercase">
                     {item.title}
                   </h3>
-                  <p className="font-serif text leading-relaxed text-justify">
+                  <p className="font-serif text leading-relaxed text-justify mb-2">
                     {item.description}
                   </p>
                   <p className="self-end font-serif text-sm">
