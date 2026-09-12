@@ -1,74 +1,425 @@
 [
   {
-    "id": "project-one",
-    "title": "Judul Proyek",
-    "description": "Deskripsi singkat proyek. Ganti dengan penjelasan tentang apa yang dibangun dan masalah apa yang diselesaikan.",
-    "image": "https://placehold.co/600x600/E3E0D6/1B1A19?text=Project+1",
-    "category": "Software Engineering",
-    "tags": ["Golang", "Javascript", "Security"],
-    "link": "https://github.com/numshv"
+    "id": "face-anti-spoofing-classification",
+    "title": "Face Anti-Spoofing Classification (DAC Find-It 2026 Competition)",
+    "description": "6-class face anti-spoofing classifier for a computer vision competition using MTCNN face detection, a dual-model ensemble of EfficientNet-B4 and ConvNeXt-Tiny with 5-fold stratified cross-validation, and Test-Time Augmentation, evaluated via macro F1-score across all attack classes.",
+    "image": null,
+    "category": "AI, ML, Data Science",
+    "tags": [
+      "PyTorch",
+      "Computer Vision",
+      "EfficientNet",
+      "ConvNeXt",
+      "Albumentations"
+    ],
+    "link": "https://github.com/wrdtlkhoir/Tubes2_BE_STEIcu"
   },
   {
-    "id": "project-two",
-    "title": "Judul Proyek",
-    "description": "Deskripsi singkat proyek. Ganti dengan penjelasan tentang apa yang dibangun dan masalah apa yang diselesaikan.",
-    "image": "https://placehold.co/600x600/E3E0D6/1B1A19?text=Project+2",
-    "category": "Data Science, AI, Machine Learning",
-    "tags": ["Python", "PyTorch", "NLP"],
-    "link": "https://github.com/numshv"
+    "id": "sentiment-analysis-llm-comments",
+    "title": "Sentiment Analysis on User Comments of Various LLMs",
+    "description": "Multiclass sentiment classifier fine-tuned with XLM-RoBERTa achieving 88% accuracy, paired with a complaint categorization and topic modeling pipeline that surfaced the top recurring pain points across 4+ LLMs.",
+    "image": null,
+    "category": "AI, ML, Data Science",
+    "tags": [
+      "XLM-RoBERTa",
+      "PyTorch",
+      "NLP",
+      "Topic Modeling"
+    ],
+    "link": "https://drive.google.com/drive/folders/1eEooRZ1R5WS1SWN6J091xJtGl5zncpru"
   },
   {
-    "id": "project-three",
-    "title": "Judul Proyek",
-    "description": "Deskripsi singkat proyek. Ganti dengan penjelasan tentang apa yang dibangun dan masalah apa yang diselesaikan.",
-    "image": "https://placehold.co/600x600/E3E0D6/1B1A19?text=Project+3",
+    "id": "ecommerce-customer-behavior-analytics-dashboard",
+    "title": "E-Commerce Customer Behavior Analytics Dashboard",
+    "description": "End-to-end data pipeline extracting, cleaning, and transforming the Olist Brazilian E-Commerce dataset, with interactive Tableau dashboards visualizing order trends, segmentation, and delivery performance, plus automated data quality validation.",
+    "image": null,
     "category": "Data Engineering",
-    "tags": ["Airflow", "SQL", "ETL"],
+    "tags": [
+      "Python",
+      "pandas",
+      "Tableau",
+      "ETL",
+      "Data Validation"
+    ],
     "link": "https://github.com/numshv"
   },
   {
-    "id": "project-four",
-    "title": "Judul Proyek",
-    "description": "Deskripsi singkat proyek. Ganti dengan penjelasan tentang apa yang dibangun dan masalah apa yang diselesaikan.",
-    "image": "https://placehold.co/600x600/E3E0D6/1B1A19?text=Project+4",
-    "category": "Software Engineering",
-    "tags": ["React", "Next.js", "TypeScript"],
-    "link": "https://github.com/numshv"
-  },
-  {
-    "id": "project-five",
-    "title": "Judul Proyek",
-    "description": "Deskripsi singkat proyek. Ganti dengan penjelasan tentang apa yang dibangun dan masalah apa yang diselesaikan.",
-    "image": "https://placehold.co/600x600/E3E0D6/1B1A19?text=Project+5",
-    "category": "Data Science, AI, Machine Learning",
-    "tags": ["TensorFlow", "Computer Vision"],
-    "link": "https://github.com/numshv"
-  },
-  {
-    "id": "project-six",
-    "title": "Judul Proyek",
-    "description": "Deskripsi singkat proyek. Ganti dengan penjelasan tentang apa yang dibangun dan masalah apa yang diselesaikan.",
-    "image": "https://placehold.co/600x600/E3E0D6/1B1A19?text=Project+6",
+    "id": "elt-pipeline-film-rental-data-warehouse",
+    "title": "ELT Pipeline for Film Rental Data Warehouse",
+    "description": "End-to-end ELT pipeline using Airbyte to consolidate 3 PostgreSQL source databases into a centralized Star Schema data warehouse, with SQL transformations and 100% record integrity verified across 5 warehouse tables.",
+    "image": null,
     "category": "Data Engineering",
-    "tags": ["Kafka", "Spark", "AWS"],
-    "link": "https://github.com/numshv"
+    "tags": [
+      "Airbyte",
+      "PostgreSQL",
+      "Data Warehousing",
+      "SQL"
+    ],
+    "link": "https://docs.google.com/document/d/1_wdOCm4J1VeXuLGBm3MpopCffh8MLhOxk2AThPfdUbE/edit?usp=sharing"
   },
   {
-    "id": "project-seven",
-    "title": "Judul Proyek",
-    "description": "Deskripsi singkat proyek. Ganti dengan penjelasan tentang apa yang dibangun dan masalah apa yang diselesaikan.",
-    "image": "https://placehold.co/600x600/E3E0D6/1B1A19?text=Project+7",
+    "id": "ml-college-student-status-prediction",
+    "title": "Machine Learning Algorithm Implementation on College Student Status Prediction",
+    "description": "Logistic Regression implemented from scratch matching scikit-learn's performance within 0.3%, plus comparative multiclass classification (Decision Tree, Logistic Regression, SVM) predicting student outcomes with 84% test accuracy.",
+    "image": null,
+    "category": "AI, ML, Data Science",
+    "tags": [
+      "Python",
+      "Scikit-learn",
+      "Logistic Regression",
+      "SVM"
+    ],
+    "link": "https://github.com/numshv/AI_Tubes2_MachineLearningn-t"
+  },
+  {
+    "id": "feedforward-neural-network-from-scratch",
+    "title": "Feedforward Neural Network from Scratch",
+    "description": "Configurable feedforward neural network built from scratch in NumPy, including all loss functions, full backpropagation, and the Adam optimizer, matching scikit-learn's MLPClassifier within 0.002 accuracy.",
+    "image": null,
+    "category": "AI, ML, Data Science",
+    "tags": [
+      "NumPy",
+      "Deep Learning",
+      "Backpropagation",
+      "Adam Optimizer"
+    ],
+    "link": "https://github.com/numshv/Tubes1_Machine-Learning_Human-Earning"
+  },
+  {
+    "id": "local-search-class-scheduling",
+    "title": "Local Search Algorithm Implementation on Class Scheduling Problem",
+    "description": "Class scheduling optimizer benchmarking Hill Climbing, Simulated Annealing, and Genetic Algorithm variants from scratch, with Genetic Algorithm reducing total conflicts by 78% versus a random baseline.",
+    "image": null,
+    "category": "AI, ML, Data Science",
+    "tags": [
+      "Python",
+      "Hill Climbing",
+      "Simulated Annealing",
+      "Genetic Algorithm"
+    ],
+    "link": "https://github.com/numshv/Tubes1AI_PendakiHandal"
+  },
+  {
+    "id": "king-pawn-endgame-solver",
+    "title": "King & Pawn Endgame Solver",
+    "description": "Web-based chess endgame solver using minimax with alpha-beta pruning, featuring an interactive 8x8 chessboard UI with file upload, playback controls, and real-time analysis under 50ms per move.",
+    "image": null,
     "category": "Software Engineering",
-    "tags": ["Rust", "Systems", "CLI"],
+    "tags": [
+      "Python",
+      "FastAPI",
+      "Next.js",
+      "Minimax"
+    ],
+    "link": "https://github.com/numshv/MiniMaxMagnusBot"
+  },
+  {
+    "id": "simsalabim-sound-image-matching",
+    "title": "Simsalabim: Sound and Image Matching System",
+    "description": "Web-based media retrieval system enabling song identification via audio fingerprinting and image-based search using PCA on facial embeddings, achieving 92% retrieval accuracy on a 500-song test dataset.",
+    "image": null,
+    "category": "Software Engineering",
+    "tags": [
+      "Django",
+      "React",
+      "Audio Fingerprinting",
+      "PCA"
+    ],
+    "link": "https://github.com/nomisnoumi/tubesalgeo02"
+  },
+  {
+    "id": "little-alchemy-recipe-finder",
+    "title": "Little Alchemy Recipe Finder",
+    "description": "Full-stack Go + React application solving Little Alchemy 2 recipes with DFS, Bidirectional Search, and parallel multithreading via goroutines, cutting resolution time by 65% versus a single-threaded baseline.",
+    "image": null,
+    "category": "Software Engineering",
+    "tags": [
+      "Go",
+      "React",
+      "Web Scraping",
+      "Concurrency"
+    ],
+    "link": "https://github.com/wrdtlkhoir/Tubes2_BE_STEIcu"
+  },
+  {
+    "id": "rush-hour-puzzle-solver",
+    "title": "Rush Hour Puzzle Solver",
+    "description": "Java + Swing GUI application solving the Rush Hour puzzle using A*, UCS, and GBFS pathfinding algorithms implemented from scratch with multiple heuristic options.",
+    "image": null,
+    "category": "Software Engineering",
+    "tags": [
+      "Java",
+      "Swing",
+      "A*",
+      "Pathfinding"
+    ],
+    "link": "https://github.com/numshv/Tucil3_13523007_13523058"
+  },
+  {
+    "id": "nimonspedia-ecommerce",
+    "title": "Nimonspedia E-Commerce",
+    "description": "Full-stack e-commerce platform with a real-time WebSocket auction feature handling 50 concurrent bidders, a containerized multi-service architecture (PHP + Node.js/Express) via Docker Compose, and full ACID-compliant checkout.",
+    "image": null,
+    "category": "Software Engineering",
+    "tags": [
+      "PHP",
+      "React",
+      "PostgreSQL",
+      "WebSocket",
+      "Docker"
+    ],
+    "link": "https://github.com/numshv/tubes-if3110-k02-19"
+  },
+  {
+    "id": "integrated-logistics-management-system",
+    "title": "Integrated Logistics Management System for PT Berkah Melano Indonesia",
+    "description": "Centralized Odoo-based system integrating a customer self-service portal with a QR-code-driven warehouse app, reducing manual plant inspection time by 60% and admin coordination overhead by an estimated 50%.",
+    "image": null,
+    "category": "Software Engineering",
+    "tags": [
+      "Odoo",
+      "QR Code",
+      "Warehouse Management"
+    ],
     "link": "https://github.com/numshv"
   },
   {
-    "id": "project-eight",
-    "title": "Judul Proyek",
-    "description": "Deskripsi singkat proyek. Ganti dengan penjelasan tentang apa yang dibangun dan masalah apa yang diselesaikan.",
-    "image": "https://placehold.co/600x600/E3E0D6/1B1A19?text=Project+8",
+    "id": "iom-itb-admin-portal-revamp",
+    "title": "IOM ITB Admin Portal Revamp",
+    "description": "Revamped an existing admin portal's article management module with a Tiptap rich-text editor, refactored backend endpoints and database migrations, and redesigned the scholarship application workflow.",
+    "image": null,
+    "category": "Software Engineering",
+    "tags": [
+      "Vue",
+      "Express.js",
+      "Tiptap",
+      "Database Migration"
+    ],
+    "link": "https://github.com/numshv"
+  },
+  {
+    "id": "roundcube-webmail-security-analysis",
+    "title": "Roundcube Webmail Security Analysis",
+    "description": "Security analysis of Roundcube Webmail through source-code review and threat modeling, reproducing three CVEs (CSRF, stored XSS, PHP object deserialization RCE) and identifying a missing Secure cookie flag.",
+    "image": null,
     "category": "Security",
-    "tags": ["dbt", "Snowflake"],
+    "tags": [
+      "Security Research",
+      "CVE Analysis",
+      "Threat Modeling"
+    ],
+    "link": "https://github.com/numshv/tubes-individu-kpl"
+  },
+  {
+    "id": "rnn-image-captioning-pipeline",
+    "title": "RNN Image Captioning and Experiment Pipeline",
+    "description": "Simple RNN decoder for image captioning with an experimentation pipeline comparing Init-Inject conditioning and beam-search decoding on the Flickr8k dataset, reaching 0.1585 BLEU-4 at beam size 5.",
+    "image": null,
+    "category": "AI, ML, Data Science",
+    "tags": [
+      "RNN",
+      "LSTM",
+      "Beam Search",
+      "Flickr8k"
+    ],
+    "link": "https://github.com/numshv/Tubes2_MachineLearning_SalmanGkDiajak"
+  },
+  {
+    "id": "aopi-astra-otoparts-policy-intelligence",
+    "title": "AOPI: Astra Otoparts Policy Intelligence",
+    "description": "Retrieval-Augmented Generation (RAG) chatbot prototype helping employees search company policies via natural-language queries with source-document references. Frontend built with Vite, TypeScript, and Tailwind CSS, with TanStack for data fetching and ESLint for code quality. Designed the policy knowledge pipeline covering ingestion, validation, indexing, and version management, targeting an estimated 60% reduction in manual policy-clarification tickets.",
+    "image": null,
+    "category": "AI, ML, Data Science",
+    "tags": [
+      "RAG",
+      "Python",
+      "Vite",
+      "TypeScript",
+      "TanStack"
+    ],
     "link": "https://github.com/numshv"
+  },
+  {
+    "id": "telco-customer-churn-mlops-pipeline",
+    "title": "Telco Customer Churn MLOps Pipeline",
+    "description": "End-to-end churn prediction pipeline covering EDA, preprocessing automation, and MLflow-based experiment tracking, with automated retraining via GitHub Actions and Docker, and live monitoring through Prometheus and Grafana.",
+    "image": null,
+    "category": "Data Engineering",
+    "tags": [
+      "MLflow",
+      "Docker",
+      "GitHub Actions",
+      "Prometheus",
+      "Grafana"
+    ],
+    "link": "https://github.com/numshv"
+  },
+  {
+    "id": "plantventory",
+    "title": "Plantventory - Plant Inventory Management Web App",
+    "description": "Full-stack plant inventory management app with complete CRUD operations via Prisma ORM, authentication flow, dark/light theme toggle, and a responsive shadcn/ui dashboard, deployed to production on Vercel.",
+    "image": null,
+    "category": "Software Engineering",
+    "tags": [
+      "Next.js",
+      "TypeScript",
+      "Prisma",
+      "Tailwind CSS"
+    ],
+    "link": "https://github.com/numshv/crud-app"
+  },
+  {
+    "id": "3d-quaternion-rotation-visualizer",
+    "title": "3D Quaternion Rotation Visualizer",
+    "description": "Custom 3D rendering engine built from scratch in Pygame demonstrating quaternion-based rotation, Tait-Bryan angles, and Euler rules, sustaining 60 FPS at 1080p with under 0.01° angular error.",
+    "image": null,
+    "category": "Software Engineering",
+    "tags": [
+      "Python",
+      "Pygame",
+      "3D Graphics",
+      "Quaternion Math"
+    ],
+    "link": "https://github.com/numshv/QuaternionRotationVisualizer"
+  },
+  {
+    "id": "shipment-management-desktop-application",
+    "title": "Shipment Management Desktop Application",
+    "description": "JavaFX desktop application with dual admin/courier role interfaces and a custom XML/JSON adapter for flexible data export, cutting data serialization setup time by 40% versus hardcoded formats.",
+    "image": null,
+    "category": "Software Engineering",
+    "tags": [
+      "Java",
+      "JavaFX",
+      "Maven",
+      "XML/JSON"
+    ],
+    "link": "https://github.com/numshv/tubes-if2010-owo"
+  },
+  {
+    "id": "cli-group-chat-tcp-over-udp",
+    "title": "CLI Based Group Chat System via Custom TCP Layer over UDP",
+    "description": "Custom reliable transport protocol built over UDP with segmentation, checksum verification, 3-way handshake, and sliding window flow control, powering a real-time CLI group messaging system with sub-300ms latency.",
+    "image": null,
+    "category": "Software Engineering",
+    "tags": [
+      "Python",
+      "Networking",
+      "TCP/UDP",
+      "Sockets"
+    ],
+    "link": "https://github.com/nomisnoumi/tugas-besar-if2230-jaringan-komputer-loss100"
+  },
+  {
+    "id": "basic-os-ext2-filesystem",
+    "title": "Build a Basic Operating System with EXT2 Filesystem",
+    "description": "Basic operating system built from scratch in C with QEMU, implementing EXT2 filesystem support, system calls, memory paging, and a process scheduler with zero cross-process memory leakage.",
+    "image": null,
+    "category": "Software Engineering",
+    "tags": [
+      "C",
+      "QEMU",
+      "Operating Systems",
+      "EXT2"
+    ],
+    "link": "https://github.com/numshv"
+  },
+  {
+    "id": "pascal-s-mini-compiler",
+    "title": "PASCAL-S Mini Compiler",
+    "description": "Partial Pascal-S compiler covering lexical analysis (DFA-based lexer), syntax analysis (recursive descent parser), and semantic analysis with decorated AST generation and symbol table management.",
+    "image": null,
+    "category": "Software Engineering",
+    "tags": [
+      "C++",
+      "Compiler Design",
+      "AST",
+      "Lexical Analysis"
+    ],
+    "link": "https://github.com/numshv/JYP-Tubes-IF2224"
+  },
+  {
+    "id": "mini-dbms",
+    "title": "Mini DBMS",
+    "description": "Large-scale Python DBMS built from scratch supporting SQL-like queries, transactions, concurrency control, and storage management, with a Concurrency Control Manager preserving full ACID properties.",
+    "image": null,
+    "category": "Software Engineering",
+    "tags": [
+      "Python",
+      "DBMS",
+      "Concurrency Control",
+      "ACID"
+    ],
+    "link": "https://github.com/numshv/mDBMS"
+  },
+  {
+    "id": "github-profile-skilltree-visualizer",
+    "title": "Github Profile SkillTree Visualizer",
+    "description": "Stateless GitHub-based skill visualization platform fetching repository metadata via the GitHub REST API and generating dynamic, embeddable SVG skill trees, serving 500+ embedding requests per day.",
+    "image": null,
+    "category": "Software Engineering",
+    "tags": [
+      "Node.js",
+      "Express",
+      "GitHub API",
+      "SVG"
+    ],
+    "link": "https://github.com/numshv/GithubSkillTree"
+  },
+  {
+    "id": "clawstruck",
+    "title": "Clawstruck",
+    "description": "Fast-paced browser arcade game built in pure HTML, CSS, and JavaScript within a 13KB constraint, featuring 60 FPS gameplay and procedural difficulty scaling. Ranked Top 100 globally at JS13KGames 2025.",
+    "image": null,
+    "category": "Software Engineering",
+    "tags": [
+      "JavaScript",
+      "HTML5",
+      "CSS",
+      "Game Development"
+    ],
+    "link": "https://js13kgames.com/games/clawstruck"
+  },
+  {
+    "id": "cofoundee",
+    "title": "CoFoundee, Website for Networking to Find Business Partners",
+    "description": "Translated Figma designs into responsive Next.js, TypeScript, and Tailwind CSS frontend components, building a reusable component library that was reused across 8 additional feature pages.",
+    "image": null,
+    "category": "Software Engineering",
+    "tags": [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Figma"
+    ],
+    "link": "https://github.com/numshv"
+  },
+  {
+    "id": "rebuilt-house-renovation-project-management",
+    "title": "Rebuilt, House Renovation Project Management Desktop Application",
+    "description": "Full software architecture documentation (use case, sequence, and class diagrams) and a Python (Tkinter) + PostgreSQL desktop application for managing house renovation projects, with a complete CRUD system.",
+    "image": null,
+    "category": "Software Engineering",
+    "tags": [
+      "Python",
+      "Tkinter",
+      "PostgreSQL",
+      "Software Architecture"
+    ],
+    "link": "https://github.com/numshv"
+  },
+  {
+    "id": "bustbuy-ecommerce-database",
+    "title": "BustBuy E-Commerce Database Design and Implementation",
+    "description": "Fully normalized (BCNF) SQL database for an e-commerce system with 25 stored procedures enforcing transactional logic, reducing data redundancy by an estimated 60% versus the original unnormalized schema.",
+    "image": null,
+    "category": "Software Engineering",
+    "tags": [
+      "SQL",
+      "PostgreSQL",
+      "Database Normalization",
+      "Stored Procedures"
+    ],
+    "link": "https://github.com/numshv/OCT_Tubes1Basdat"
   }
 ]
