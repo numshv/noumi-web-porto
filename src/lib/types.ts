@@ -4,7 +4,7 @@ export interface WorkItem {
   id: string;
   title: string;
   description: string;
-  image: string;
+  image: string | null;
   category: string;
   tags: string[];
   link: string;
