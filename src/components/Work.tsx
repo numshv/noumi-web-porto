@@ -37,10 +37,10 @@ const cardVariants = {
   exit: { opacity: 0, y: -12, transition: { duration: 0.2 } },
 };
 
-function WorkImage({ src, alt }: { src: string; alt: string }) {
-  const [failed, setFailed] = useState(true);
+function WorkImage({ src, alt }: { src: string | null; alt: string }) {
+  const [failed, setFailed] = useState(!src);
 
-  if (failed) {
+  if (!src || failed) {
     return (
       <div className="flex h-full w-full items-center justify-center">
         <ImageOff size={64} strokeWidth={2} color="#8F8C89" />
