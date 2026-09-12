@@ -1,0 +1,74 @@
+[
+  {
+    "id": "project-one",
+    "title": "Judul Proyek",
+    "description": "Deskripsi singkat proyek. Ganti dengan penjelasan tentang apa yang dibangun dan masalah apa yang diselesaikan.",
+    "image": "https://placehold.co/600x600/E3E0D6/1B1A19?text=Project+1",
+    "category": "Software Engineering",
+    "tags": ["Golang", "Javascript", "Security"],
+    "link": "https://github.com/numshv"
+  },
+  {
+    "id": "project-two",
+    "title": "Judul Proyek",
+    "description": "Deskripsi singkat proyek. Ganti dengan penjelasan tentang apa yang dibangun dan masalah apa yang diselesaikan.",
+    "image": "https://placehold.co/600x600/E3E0D6/1B1A19?text=Project+2",
+    "category": "Data Science, AI, Machine Learning",
+    "tags": ["Python", "PyTorch", "NLP"],
+    "link": "https://github.com/numshv"
+  },
+  {
+    "id": "project-three",
+    "title": "Judul Proyek",
+    "description": "Deskripsi singkat proyek. Ganti dengan penjelasan tentang apa yang dibangun dan masalah apa yang diselesaikan.",
+    "image": "https://placehold.co/600x600/E3E0D6/1B1A19?text=Project+3",
+    "category": "Data Engineering",
+    "tags": ["Airflow", "SQL", "ETL"],
+    "link": "https://github.com/numshv"
+  },
+  {
+    "id": "project-four",
+    "title": "Judul Proyek",
+    "description": "Deskripsi singkat proyek. Ganti dengan penjelasan tentang apa yang dibangun dan masalah apa yang diselesaikan.",
+    "image": "https://placehold.co/600x600/E3E0D6/1B1A19?text=Project+4",
+    "category": "Software Engineering",
+    "tags": ["React", "Next.js", "TypeScript"],
+    "link": "https://github.com/numshv"
+  },
+  {
+    "id": "project-five",
+    "title": "Judul Proyek",
+    "description": "Deskripsi singkat proyek. Ganti dengan penjelasan tentang apa yang dibangun dan masalah apa yang diselesaikan.",
+    "image": "https://placehold.co/600x600/E3E0D6/1B1A19?text=Project+5",
+    "category": "Data Science, AI, Machine Learning",
+    "tags": ["TensorFlow", "Computer Vision"],
+    "link": "https://github.com/numshv"
+  },
+  {
+    "id": "project-six",
+    "title": "Judul Proyek",
+    "description": "Deskripsi singkat proyek. Ganti dengan penjelasan tentang apa yang dibangun dan masalah apa yang diselesaikan.",
+    "image": "https://placehold.co/600x600/E3E0D6/1B1A19?text=Project+6",
+    "category": "Data Engineering",
+    "tags": ["Kafka", "Spark", "AWS"],
+    "link": "https://github.com/numshv"
+  },
+  {
+    "id": "project-seven",
+    "title": "Judul Proyek",
+    "description": "Deskripsi singkat proyek. Ganti dengan penjelasan tentang apa yang dibangun dan masalah apa yang diselesaikan.",
+    "image": "https://placehold.co/600x600/E3E0D6/1B1A19?text=Project+7",
+    "category": "Software Engineering",
+    "tags": ["Rust", "Systems", "CLI"],
+    "link": "https://github.com/numshv"
+  },
+  {
+    "id": "project-eight",
+    "title": "Judul Proyek",
+    "description": "Deskripsi singkat proyek. Ganti dengan penjelasan tentang apa yang dibangun dan masalah apa yang diselesaikan.",
+    "image": "https://placehold.co/600x600/E3E0D6/1B1A19?text=Project+8",
+    "category": "Security",
+    "tags": ["dbt", "Snowflake"],
+    "link": "https://github.com/numshv"
+  }
+]
